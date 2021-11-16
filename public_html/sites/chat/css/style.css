@@ -1,0 +1,216 @@
+/*************************************************
+Copyright © 2021 Ennio Marke
+ ____    ____  ____  ____   ______   _________  
+|_   \  /   _||_  _||_  _|.' ____ \ |  _   _  | 
+  |   \/   |    \ \  / /  | (___ \_||_/ | | \_| 
+  | |\  /| |     \ \/ /    _.____`.     | |     
+ _| |_\/_| |_    _|  |_   | \____) |   _| |_    
+|_____||_____|  |______|   \______.'  |_____| 
+*************************************************/
+
+:root {
+    --primary-color: #302AE6;
+    --secondary-color: #536390;
+    --font-color: #424242;
+    --bg-color: #fff;
+    --heading-color: #292922;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #ffffff;
+    --secondary-color: #895ed8;
+    --font-color: #e1e1ff;
+    --bg-color: #161625;
+    --heading-color: #818cab;
+  }
+  
+  html {
+    margin: 2vmin;
+	font-size: 2vmin;
+    overflow: hidden;
+  }
+
+  h1 {
+    color: var(--heading-color);
+    font-size: 2rem;
+    margin-bottom: 1vh;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0;
+    font-size: calc(1rem + 0.25vh);
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    font-weight: bold;
+  }
+  
+  a:hover, a:focus {
+    border-bottom: 3px solid currentColor;
+  }
+  
+  em {
+    color: var(--font-color);
+  }
+  
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+  }
+
+  input {
+    background-color: var(--bg-color);
+  }
+
+  label {
+    color: var(--heading-color);
+  }
+  
+  p.pundefined { color: var(--font-color); }
+  p.pblack { color: black; }
+  p.pwhite { color: white }
+  p.pred { color: red }
+  p.porange { color: orange }
+  p.pyellow { color: yellow; }
+  p.pgreen { color: lime }
+  p.pblue { color: blue; }
+  p.ppurple { color: purple; }
+  
+  section {
+    max-width: 68%;
+    margin: 0 auto;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+  }
+  
+  
+  .center {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /*toggle switch*/
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .theme-switch-wrapper em {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+  
+  .theme-switch {
+    display: inline-block;
+    height: 34px; 
+    position: relative;
+    width: 60px;
+  }
+  
+  .theme-switch input {
+    display:none;
+  }
+  
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+  }
+  
+  input:checked + .slider {
+    background-color: #66bb6a;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  h1 { margin: 0; padding: 0; font-size: 2em; }
+  p.subtitle { margin: 0; padding: 0 0 0 0.125em; font-size: 0.77em; color: gray; }
+  
+  #messages-wrapper { width: 75vw; margin: 0 auto; }
+
+  ul#messages { overflow: auto; height: 75vh; width: 75vw; margin: 1em 0; padding: 0 3px; list-style: none; border: 1px solid gray;  border-radius: 10px; box-shadow: 0px 2px 5px var(--secondary-color); margin-right: 0px; align-self: center; }
+  ul#messages li { margin: 0.35em 0; padding: 0; color: var(--font-color);}
+  ul#messages li small { display: block; font-size: 0.59em; color: gray; }
+  ul#messages li.pending { color: #aaa; }
+  
+  form { font-size: 1em; margin: 1em 0; padding: 0 auto;  }
+  form p { position: relative; margin: 0.5em 0; padding: 0 6.25vw; width: 75vw }
+  form p input { font-size: 1em; border-radius: 10px; border: 1px solid gray; box-shadow: 0px 2px 5px var(--secondary-color); color: var(--font-color); width: 75vw; }
+  form p input#name { width: 10em; text-align: center; padding-right: 0; }
+  form p button { position: absolute; top: 0; right: 6.25vw; padding: 0; }
+  
+  
+  pre { font-size: 0.77em; }
+  
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #8931d8 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #8931d8;
+    border-radius: 10px;
+    border: 3px solid var(--bg-color);
+  }
+
+  /*********************************
+         :\     /;               _
+        ;  \___/  ;             ; ;
+       ,:-"'   `"-:.            / ;
+      /,---.   ,---.\         _; /
+     ((  |  ) (  |  ))    ,-""_,"
+      \`````   `````/""""",-""
+       '-.._ v _..-'      )
+         / ___   ____,..  \
+        / /   | |   | ( \. \
+       / /    | |    | |  \ \
+       `"     `"     `"    `"
+  *********************************/
