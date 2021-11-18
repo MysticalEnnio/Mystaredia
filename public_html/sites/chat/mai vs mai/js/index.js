@@ -3,7 +3,7 @@ Copyright © 2021 Ennio Marke
 *******************************************************************************/
 
 document.addEventListener("DOMContentLoaded", () => {
-  
+
   //#region darkmode
   const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
   const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
@@ -24,14 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
     else {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light'); //add this
-    }    
+    }
   }
-  
-  
+
+
 
   toggleSwitch.addEventListener('change', switchTheme, false);
   //#endregion
-  
+
   //#region elements
   var output = document.getElementById("output")
   var input = document.getElementById("input")
@@ -44,38 +44,29 @@ document.addEventListener("DOMContentLoaded", () => {
     this.style.height = (this.scrollHeight) + "px";
   });
 
-  function logOutput(text) {
-    var ul = document.getElementById("output");
-    var li = document.createElement("li");
-    li.appendChild(document.createTextNode("Four"));
-    ul.appendChild(li);
+  var readSpeed;
+
+  var forever = setInterval(() => {
+    
+  }, 1000 * readSpeed)
+
+  function reaMai() {
+    $.ajax({
+      url: `https://url-req.glitch.me/http://api.brainshop.ai/get?bid=156779&key=0ErJYSb1ZlZmOcel&uid=${userName}&msg=${input.value}`,
+        type: "GET",
+        withCredentials: true,
+        success: function (data) {
+          return data
+          console.log(data)
+        },
+        error: function (xhr, status) {
+          alert("error");
+        }
+    });
   }
 
-  $("textarea").keydown(function(e){
-    // Enter was pressed without shift key
-    if (e.keyCode == 13 && !e.shiftKey)
-    {
-      // prevent default behavior
-      e.preventDefault();
-      if(input.value=="") return
-      logOutput(input.value)
-        $.ajax({
-          url: `https://url-req.glitch.me/http://api.brainshop.ai/get?bid=156779&key=0ErJYSb1ZlZmOcel&uid=${userName}&msg=${input.value}`,
-          type: "GET",
-          withCredentials: true,
-          success: function (data) {
-            logOutput(data.cnt, 1)
-            output.scrollTop = output.scrollHeight;
-          	console.log(data)
-          },
-          error: function (xhr, status) {
-            alert("error");
-          }
-        });
-        input.value = "";
-        output.scrollTop = output.scrollHeight;
-    }
-  })
+    output.scrollTop = output.scrollHeight;
+
 
   //#region functions
     function logOutput(text, cN) {
@@ -87,9 +78,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   //#endregion
 
-  var userName = prompt("What is your name?")
-  userName.toLowerCase() == "ennio"? 
-  	prompt("psw?").toLowerCase() == "myst"? 
-    	userName == "Mystical_Ennio":userName == "impersonate"
-  :""
+
 })

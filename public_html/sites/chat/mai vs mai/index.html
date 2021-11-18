@@ -37,7 +37,7 @@ Copyright © 2021 Ennio Marke
   </div>
 
   <div id="footer">
-    <input type="range" min="1" max="10" step="1"></input>
+    <input type="range" min="-10000" max="10000" step="1"></input>
   </div>
 
 </body>
