@@ -35,29 +35,29 @@ document.addEventListener("DOMContentLoaded", () => {
   //#region elements
   var output = document.getElementById("output")
   var input = document.getElementById("input")
+  var slider = document.getElementById("speedSlider")
   //#endregion
 
-  $("textarea").each(function () {
-    this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
-  }).on("input", function () {
-    this.style.height = "auto";
-    this.style.height = (this.scrollHeight) + "px";
-  });
+  var readSpeed = slider.value;
 
-  var readSpeed;
+  var setReadSpeed = setInterval(() => {
+    readSpeed = slider.value
+  }, 250);
 
   var forever = setInterval(() => {
-    
-  }, 1000 * readSpeed)
+    setTimeout(() => {
+      logOutput(readSpeed)
+    }, 50 + readSpeed);
+  }, 50)
 
-  function reaMai() {
+  function reqMai(msg) {
     $.ajax({
-      url: `https://url-req.glitch.me/http://api.brainshop.ai/get?bid=156779&key=0ErJYSb1ZlZmOcel&uid=${userName}&msg=${input.value}`,
+      url: `https://url-req.glitch.me/http://api.brainshop.ai/get?bid=156779&key=0ErJYSb1ZlZmOcel&uid=mai&msg=${msg}`,
         type: "GET",
         withCredentials: true,
         success: function (data) {
-          return data
           console.log(data)
+          return data
         },
         error: function (xhr, status) {
           alert("error");
@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       li.appendChild(document.createTextNode(text));
       cN?li.classList.add("pink"):""
       ul.appendChild(li);
+      output.scrollTop = output.scrollHeight;
     }
   //#endregion
 
