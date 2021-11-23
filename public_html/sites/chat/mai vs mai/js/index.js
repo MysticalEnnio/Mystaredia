@@ -37,8 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
   var input = document.getElementById("input")
   var slider = document.getElementById("speedSlider")
   var isNum = data => /^\d+$/.test(data);
-  var lastMsg = "Hello";
+  var lastMsg;
   var msg;
+  var curMai = 1;
   //#endregion
 
   function load() {
@@ -48,6 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if(readSpeed>5||readSpeed<1||!isNum(readSpeed)) readSpeed = 0
       readSpeed = parseInt(readSpeed)
     }
+
+    while(!lastMsg) {
+      lastMsg = prompt("Message to start with?")
+    }
+    logOutput(lastMsg, 0)
+
     var forever = setInterval(() => {
       setTimeout(() => {
         reqAndLog()
@@ -59,8 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function reqAndLog() {
     $.get(`https://url-req.glitch.me/http://api.brainshop.ai/get?bid=156779&key=0ErJYSb1ZlZmOcel&uid=mai&msg=${lastMsg.cnt}`, data => {
       msg = data  
-      logOutput(msg.cnt)
+      logOutput(msg.cnt, curMai)
       lastMsg = msg
+      curMai = !curMai
     })
   }
 
