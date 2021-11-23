@@ -36,39 +36,39 @@ document.addEventListener("DOMContentLoaded", () => {
   var output = document.getElementById("output")
   var input = document.getElementById("input")
   var slider = document.getElementById("speedSlider")
+  var isNum = data => /^\d+$/.test(data);
+  var lastMsg = "Hello";
+  var msg;
   //#endregion
 
-  var readSpeed = slider.value;
-
-  var setReadSpeed = setInterval(() => {
-    readSpeed = slider.value
-  }, 250);
-
-  var forever = setInterval(() => {
-    setTimeout(() => {
-      logOutput(readSpeed)
-    }, 50 + readSpeed);
-  }, 50)
-
-  function reqMai(msg) {
-    $.ajax({
-      url: `https://url-req.glitch.me/http://api.brainshop.ai/get?bid=156779&key=0ErJYSb1ZlZmOcel&uid=mai&msg=${msg}`,
-        type: "GET",
-        withCredentials: true,
-        success: function (data) {
-          console.log(data)
-          return data
-        },
-        error: function (xhr, status) {
-          alert("error");
-        }
-    });
+  function load() {
+    var readSpeed;
+    while(!readSpeed) {
+      readSpeed = prompt("Readspeed multiplier? (1-5)")
+      if(readSpeed>5||readSpeed<1||!isNum(readSpeed)) readSpeed = 0
+      readSpeed = parseInt(readSpeed)
+    }
+    var forever = setInterval(() => {
+      setTimeout(() => {
+        reqAndLog()
+      }, 5000 / readSpeed );
+    }, 5000 / readSpeed)
+    
   }
 
-    output.scrollTop = output.scrollHeight;
+  function reqAndLog() {
+    $.get(`https://url-req.glitch.me/http://api.brainshop.ai/get?bid=156779&key=0ErJYSb1ZlZmOcel&uid=mai&msg=${lastMsg.cnt}`, data => {
+      msg = data  
+      logOutput(msg.cnt)
+      lastMsg = msg
+    })
+  }
+
+  //output.scrollTop = output.scrollHeight;
 
 
   //#region functions
+
     function logOutput(text, cN) {
       var ul = document.getElementById("output");
       var li = document.createElement("li");
@@ -79,5 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   //#endregion
 
+    load()
 
 })
