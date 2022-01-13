@@ -1,13 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
-  <defs>
-    <style>
-      .cls-1 {
-        font-size: 320px;
-        fill: #fff;
-        font-family: YANDERE;
-        font-weight: 500;
-      }
-    </style>
-  </defs>
-  <text id="M" class="cls-1" x="28.5" y="216.5">M</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><defs><style>.cls-1{font-size:320px;fill:#fff;font-family:YANDERE;font-weight:500}</style></defs><text id="M" x="28.5" y="216.5" class="cls-1">M</text></svg>
